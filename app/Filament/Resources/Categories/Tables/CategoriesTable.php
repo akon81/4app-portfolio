@@ -13,7 +13,15 @@ class CategoriesTable
     {
         return $table
             ->columns([
-                //
+                \Filament\Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
+                    ->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable(),
+                \Filament\Tables\Columns\TextColumn::make('created_at')
+                    ->label('Utworzono')
+                    ->dateTime('Y-m-d H:i'),
             ])
             ->filters([
                 //
