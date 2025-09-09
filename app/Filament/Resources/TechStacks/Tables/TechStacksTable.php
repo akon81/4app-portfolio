@@ -13,13 +13,28 @@ class TechStacksTable
     {
         return $table
             ->columns([
-                //
+                \Filament\Tables\Columns\TextColumn::make('name')
+                    ->label('Nazwa')
+                    ->searchable()
+                    ->sortable(),
+                \Filament\Tables\Columns\ImageColumn::make('icon')
+                    ->label('Ikona')
+                    ->height(32),
+                \Filament\Tables\Columns\TextColumn::make('description')
+                    ->label('Opis')
+                    ->limit(40),
+                \Filament\Tables\Columns\TextInputColumn::make('order')
+                    ->label('Kolejność')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'width: 4rem']),
             ])
+            ->defaultSort('order', 'asc')
             ->filters([
                 //
             ])
             ->recordActions([
                 EditAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
