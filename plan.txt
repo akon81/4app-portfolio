@@ -1,0 +1,122 @@
+## Start projektu
+
+- [ ]  Utwórz nowy projekt Laravel 12 w HERD
+    
+    ```bash
+    laravel new 4app-portfolio
+    
+    ```
+    
+
+Skonfiguruj .env (DB, MAIL, APP_URL)
+
+Zainstaluj Filament v4 i utwórz konto admina
+
+```
+composer require filament/filament:"^3.0"
+php artisan make:filament-user
+
+```
+
+? 2. Instalacje dodatkowe
+
+Zainstaluj Spatie Media Library (do galerii projektów)
+
+composer require spatie/laravel-medialibrary:^11.0
+php artisan vendor:publish --tag="media-library-migrations"
+php artisan migrate
+
+```
+Zainstaluj filament/spatie-media-library-plugin (opcjonalnie – lepszy upload w panelu)
+
+```
+
+? 3. Modele i migracje
+
+Project – projekty portfolio
+
+```
+title, slug, description, images, category_id, tags (pivot), published_at
+
+```
+
+Category – kategorie projektów
+
+```
+name, slug
+
+```
+
+Tag – tagi/technologie
+
+```
+name, slug
+
+```
+
+TechStack – technologie w stacku
+
+```
+name, icon, description, order
+
+```
+
+ContactInfo – edytowalne dane kontaktowe
+
+```
+email, phone, linkedin, github, other_links
+
+Message – wiadomoœci kontaktowe
+
+    name, email, message, status
+
+```
+
+? 4. Filament Resources
+
+ProjectResource – CRUD + upload galerii
+
+CategoryResource – CRUD kategorii
+
+TagResource – CRUD tagów
+
+TechStackResource – CRUD stacku (kolejnoœæ, ikony)
+
+ContactInfoResource – edycja danych kontaktowych
+
+```
+MessageResource – podgl¹d wiadomoœci + zmiana statusu
+
+```
+
+? 5. Frontend (Blade)
+
+/ – strona g³ówna
+
+```
+Hero (statycznie w Blade)
+
+Ostatnie projekty (dynamiczne z Project)
+
+Stack technologiczny (z TechStack)
+
+Dane kontaktowe (z ContactInfo)
+
+```
+
+/portfolio – wszystkie projekty z filtrowaniem po kategoriach/tagach
+
+/portfolio/{slug} – szczegó³y projektu (opis, galeria, technologie)
+
+```
+/contact – formularz kontaktowy (zapis do DB + wysy³ka maila)
+
+```
+
+? 6. Dodatki
+
+Walidacja formularza kontaktowego (honeypot / reCAPTCHA v3)
+
+SEO: meta tagi, slug w URL
+
+Deployment (Forge, VPS, inny hosting)
