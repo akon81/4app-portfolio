@@ -27,7 +27,15 @@ class ProjectForm
 
                 \Filament\Forms\Components\RichEditor::make('description')
                     ->label('Pełny opis')
-                    ->required(),
+                    ->required()
+                    ->customBlocks([
+                        \App\Filament\RichContentCustomBlocks\HeroBlock::class,
+                        \App\Filament\RichContentCustomBlocks\CallToActionBlock::class,
+                    ])
+                    ->mergeTags([
+                        'name',
+                        'today',
+                    ]),
 
                 \Filament\Forms\Components\SpatieMediaLibraryFileUpload::make('images')
                     ->label('Zdjęcia projektu')
