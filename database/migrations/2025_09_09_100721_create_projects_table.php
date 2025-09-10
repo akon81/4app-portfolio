@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
+            $table->string('excerpt')->nullable();
             $table->text('description')->nullable();
+            $table->string('url')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

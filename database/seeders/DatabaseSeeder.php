@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         ]);
     $this->call(CategorySeeder::class);
     $this->call(TechStackSeeder::class);
+    $this->call(ProjectSeeder::class);
     }
 }
