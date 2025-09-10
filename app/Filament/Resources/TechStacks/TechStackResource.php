@@ -20,11 +20,16 @@ class TechStackResource extends Resource
 
     protected static ?string $label = 'Stack technologiczny';
 
-    protected static ?string $pluralLabel = 'Stacki technologiczne';
+    protected static ?string $pluralLabel = 'Stack technologiczny';
 
-    protected static ?string $navigationLabel = 'Stacki technologiczne';
+    protected static ?string $navigationLabel = 'Stack technologiczny';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::CpuChip;
+
+    public static function getNavigationSort(): ?int
+    {
+        return 3;
+    }
 
     public static function form(Schema $schema): Schema
     {

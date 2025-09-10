@@ -23,6 +23,11 @@ class CategoryResource extends Resource
     protected static ?string $navigationLabel = 'Kategorie';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
+    public static function getNavigationSort(): ?int
+    {
+        return 2;
+    }
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);
